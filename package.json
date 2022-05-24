@@ -10,7 +10,6 @@
   "author": "Henrique0498, Brunotbx & Mauriciosm13",
   "license": "ISC",
   "dependencies": {
-    "node-fetch": "^2.6.1"
   },
   "devDependencies": {}
 }
