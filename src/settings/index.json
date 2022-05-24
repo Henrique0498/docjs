@@ -1,0 +1,83 @@
+{
+  "sourceSave": "docJs/save",
+
+  "search": {
+    "path": "docJs",
+    "file": "[a-zA-Z0-9._\\b]\\.docJs\\.md$"
+  },
+
+  "replaces": [
+    {
+      "open": {
+        "regex": "\n",
+        "replace": "<br/>"
+      }
+    },
+    {
+      "open": {
+        "regex": "\\s",
+        "replace": "&nbsp;"
+      }
+    },
+    {
+      "open": {
+        "regex": "\\[title\\](<br/>)?",
+        "replace": "<h2>"
+      },
+      "close": {
+        "regex": "\\[/title\\](<br/>)?",
+        "replace": "</h2>"
+      }
+    },
+    {
+      "open": {
+        "regex": "\\[subTitle\\](<br/>)?",
+        "replace": "<p class='subTitle' >"
+      },
+      "close": {
+        "regex": "\\[/subTitle\\](<br/>)?",
+        "replace": "</p>"
+      }
+    },
+    {
+      "open": {
+        "regex": "\\[titleDescription\\](<br/>)?",
+        "replace": "<h4>"
+      },
+      "close": {
+        "regex": "\\[/titleDescription\\](<br/>)?",
+        "replace": "</h4>"
+      }
+    },
+    {
+      "open": {
+        "regex": "\\[description\\](<br/>)?",
+        "replace": "<p>"
+      },
+      "close": {
+        "regex": "\\[/description\\](<br/>)?",
+        "replace": "</p>"
+      }
+    },
+    {
+      "open": {
+        "regex": "\\[subDescription\\](<br/>)?",
+        "replace": "<p class='subDescription' >"
+      },
+      "close": {
+        "regex": "\\[/subDescription\\](<br/>)?",
+        "replace": "</p>"
+      }
+    },
+    {
+      "open": {
+        "regex": "\\[code\\](<br/>)?",
+        "replace": "<code>"
+      },
+      "close": {
+        "regex": "\\[/code\\](<br/>)?",
+        "replace": "</code>"
+      }
+    }
+  ]
+}
