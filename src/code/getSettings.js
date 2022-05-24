@@ -1,7 +1,7 @@
 const getFile = require("./getFile");
+const  settingDefault = require('./../settings/index.json')
 
 module.exports = async function getSettings() {
-  const settingDefault = JSON.parse(await getFile("src/settings/index.json"));
   let result = null;
 
   try {
