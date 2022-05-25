@@ -1,15 +1,17 @@
 {
   "name": "izi-doc-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lib de documentação criada em node.js",
   "main": "index.js",
   "scripts": {
     "docjs": "node index"
   },
-  "keywords": ["documentação", "doc"],
+  "keywords": [
+    "documentação",
+    "doc"
+  ],
   "author": "Henrique0498, Brunotbx & Mauriciosm13",
   "license": "ISC",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {}
 }
