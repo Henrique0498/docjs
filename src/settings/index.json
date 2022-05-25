@@ -1,8 +1,8 @@
 {
-  "sourceSave": "docJs/save",
+  "sourceSave": "iziDocJs/save",
 
   "search": {
-    "path": "docJs",
+    "path": "iziDocJs",
     "file": "[a-zA-Z0-9._\\b]\\.docJs\\.md$"
   },
 

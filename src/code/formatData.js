@@ -3,16 +3,21 @@ const saveFile = require("./saveFile");
 const getFile = require("./getFile");
 const getSettings = require("./getSettings");
 
+const path = require("path");
+const dir =  path.resolve( __dirname, '../file/data.json')
+
 module.exports = async function formatData() {
-  const { data, ...teste } = JSON.parse(await getFile("src/file/data.json"));
+  const { data, ...props } = JSON.parse(await getFile(dir));
   const { replaces, sourceSave } = await getSettings();
 
+  const savePath =  path.resolve( '../../' + sourceSave)
+
   const dataModified = {
-    ...teste,
+    ...props,
     data: data.map((item) => {
       return { ...item, text: replaceValues(item.text, replaces) };
     }),
   };
 
-  await saveFile(dataModified, sourceSave);
+  await saveFile(dataModified, savePath);
 };

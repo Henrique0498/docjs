@@ -2,9 +2,12 @@ const fs = require("fs");
 
 const getSource = require("./getSource");
 
+const path = require("path");
+const dir =  path.resolve( __dirname, '../file')
+
 module.exports = async function saveFile(
   data,
-  path = "src/file",
+  path = dir,
   fileName = "data.json"
 ) {
   const dir = getSource(path);
