@@ -2,11 +2,10 @@ const fs = require("fs");
 const getSettings = require("./getSettings");
 
 module.exports = async function listFiles(dir, file = [], dirFile = "") {
-
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
-  
+
   let listOfFiles = fs.readdirSync(dir);
 
   for (let index in listOfFiles) {

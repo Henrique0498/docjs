@@ -1,12 +1,18 @@
 const getFile = require("./getFile");
-const  settingDefault = require('./../settings/index.json')
+const settingDefault = require("./../settings/index.json");
 const path = require("path");
 
 module.exports = async function getSettings() {
   let result = null;
 
   try {
-    settingUser = JSON.parse(await getFile(path.resolve( '../../.iziDocJs.json')))
+    settingUser = JSON.parse(
+      await getFile(path.resolve("../../.iziDocJs.json"))
+    );
+
+    if (!settingUser.replaces) {
+      settingUser.replaces = [];
+    }
 
     result = {
       ...settingDefault,
