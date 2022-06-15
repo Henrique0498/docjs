@@ -8,14 +8,16 @@ const listFiles = require("./src/code/listFiles");
 //   build()
 // }
 
-async function run(){
+async function run() {
+  debugger;
   const { search } = await getSettings();
   const source = getSource(search.path);
   const fileList = await listFiles(source);
 
-  return new Promise((resolve) => {
-    resolve(createJson(fileList));
-  });
+  console.log(fileList)
+
+
+  createJson(fileList);
 }
 
-run()
+run();
