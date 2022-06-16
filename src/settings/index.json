@@ -7,11 +7,5 @@
   },
 
   "replaces": [
-    {
-      "open": {
-        "regex": "\n",
-        "replace": "<br/>"
-      }
-    }
   ]
 }

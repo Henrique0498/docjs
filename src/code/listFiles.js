@@ -15,16 +15,20 @@ module.exports = async function listFiles(dir = "") {
     const stat = fs.statSync(dir + "/" + item);
 
     if (stat.isDirectory()) {
-      dataResult.push({
-        id: `${dir}/${item}`,
-        name: formatName(dir, item),
-        path: `${dir}/${item}`,
-        subs: await listFiles(`${dir}/${item}`),
-      });
+      const subs = await listFiles(`${dir}/${item}`);
+      if (subs && subs.length >= 1) {
+
+        dataResult.push({
+          id: `${dir}/${item}`.split('src/').pop(),
+          name: formatName(dir, item),
+          path: `${dir}/${item}`,
+          subs,
+        });
+      }
     } else {
       if (/Readme.md$/.test(item)) {
         dataResult.push({
-          id: dir,
+          id: `${dir}/${item}`.split('src/').pop(),
           path: `${dir}/${item}`,
           name: formatName(dir, item),
         });

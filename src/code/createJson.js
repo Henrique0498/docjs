@@ -1,6 +1,4 @@
 const getFile = require("./getFile");
-const saveFile = require("./saveFile");
-const path = require("path");
 const fs = require("fs");
 
 module.exports = async function createJson(fileList, source) {
