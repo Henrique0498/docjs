@@ -23,7 +23,7 @@ module.exports = async function getSettings() {
     result = settingDefault;
   }
 
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     resolve(result);
   });
 };

@@ -4,6 +4,7 @@ const listFiles = require("./code/listFiles");
 const formatData = require("./code/formatData");
 const deleteFile = require("./code/deleteFile");
 const getSettings = require("./code/getSettings");
+const saveFile = require("./code/saveFile");
 
 function deleteAfterData() {
   return new Promise((resolve) => {
@@ -16,8 +17,10 @@ async function createNewData() {
   const source = getSource(search.path);
   const fileList = await listFiles(source);
 
+  const data = await createJson(fileList);
+
   return new Promise((resolve) => {
-    resolve(createJson(fileList));
+    resolve(saveFile(data));
   });
 }
 
@@ -31,4 +34,4 @@ module.exports = function build() {
   deleteAfterData()
     .then(() => createNewData())
     .then(() => generatorData());
-}
+};

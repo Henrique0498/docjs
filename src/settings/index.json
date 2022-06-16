@@ -6,5 +6,12 @@
     "file": "Readme.md$"
   },
 
-  "replaces": []
+  "replaces": [
+    {
+      "open": {
+        "regex": "\n",
+        "replace": "<br/>"
+      }
+    }
+  ]
 }

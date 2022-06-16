@@ -1,5 +1,5 @@
 module.exports = function replaceValue(value, regexArray = []) {
-  let valueModified = value;
+  let valueModified = value + "";
 
   regexArray.map(({ open, close }) => {
     if (open) {

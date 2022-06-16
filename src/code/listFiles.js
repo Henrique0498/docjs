@@ -1,15 +1,15 @@
 const fs = require("fs");
-const path = require("path");
 
-module.exports = async function listFiles(dir) {
+const formatName = require("./formatName");
+
+module.exports = async function listFiles(dir = "") {
   const dataResult = [];
+
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
 
   let listOfFiles = fs.readdirSync(dir);
-
-  debugger;
 
   listOfFiles.map(async (item) => {
     const stat = fs.statSync(dir + "/" + item);
@@ -17,14 +17,18 @@ module.exports = async function listFiles(dir) {
     if (stat.isDirectory()) {
       dataResult.push({
         id: `${dir}/${item}`,
-        name: path.dirname(`${dir}/${item}`).split("/").pop(),
+        name: formatName(dir, item),
+        path: `${dir}/${item}`,
         subs: await listFiles(`${dir}/${item}`),
       });
     } else {
-      dataResult.push({
-        id: `${dir}/${item}`,
-        name: path.dirname(`${dir}/${item}`).split("/").pop(),
-      });
+      if (/Readme.md$/.test(item)) {
+        dataResult.push({
+          id: dir,
+          path: `${dir}/${item}`,
+          name: formatName(dir, item),
+        });
+      }
     }
   });
 

@@ -1,26 +1,32 @@
 const getFile = require("./getFile");
 const saveFile = require("./saveFile");
 const path = require("path");
+const fs = require("fs");
 
 module.exports = async function createJson(fileList, source) {
   let json = [];
-  let data = {};
 
   json = await Promise.all(
     fileList.map(async (file) => {
-      const text = await getFile(file.path);
+      const stat = fs.statSync(file.path);
 
-      return {
-        ...file,
-        source: path.dirname(file.path).split("/").pop(),
-        text,
-      };
+      if (stat.isDirectory()) {
+        return {
+          ...file,
+          subs: await createJson(file.subs),
+        };
+      } else {
+        const text = await getFile(file.path);
+
+        return {
+          ...file,
+          data: text,
+        };
+      }
     })
   );
 
-  data = {
-    data: json,
-  };
-
-  await saveFile(data, source);
+  return new Promise((resolve) => {
+    return resolve(json);
+  });
 };
