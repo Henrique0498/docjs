@@ -12,15 +12,17 @@ module.exports = async function formatData() {
 
   const savePath = path.resolve("../../" + sourceSave);
 
-  const jsonModified = {
-    data: json.map((item) => {
-      if (item.subs) {
-        return item;
+  function format(value){
+    return value.map((item) => {
+      if(item.subs){
+        return format(item.subs)
       }
 
       return { ...item, data: replaceValues(item.data, replaces) };
-    }),
-  };
+    })
+  }
+  
+  const jsonModified = format(json)
 
   await saveFile(jsonModified, savePath);
 };
